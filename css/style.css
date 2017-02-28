@@ -1,0 +1,606 @@
+@import url('https://fonts.googleapis.com/css?family=Chewy|Roboto');
+
+@media print {
+
+    nav {display: none;}
+    #print_filter {display: none;}
+    body {
+        font-size: 14px;
+    }
+
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', verdana;
+    position: relative;
+}
+
+nav {
+    background-color: darkgray;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+}
+
+
+nav ul li {
+    list-style: none;
+    display: inline;
+}
+
+
+nav ul li a {
+    text-decoration: none;
+    padding: 15px 25px;
+    display: inline-block;
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 20px;
+}
+
+nav ul li a:hover {
+    background-color: #111111;
+}
+
+.header {
+    margin-right: 40px;
+}
+
+
+.header a {
+    color: #870076;
+    text-transform: uppercase;
+    margin-left: 132px;
+    font-family: 'Chewy';
+}
+
+
+#studentsNumber {
+    padding: 7px 9px 7px 0px;
+    font-size: 20px;
+    font-weight: 100;
+    color: #525252;
+}
+
+#studentsNumber span {
+    color: #4CAF50;
+    font-family: 'Chewy';
+    font-size: 27px;
+    letter-spacing: 1px;
+}
+
+#homeSection {
+    margin: 20px 130px 0px 130px;
+}
+
+#homeSearchFilter {
+    background-color: darkgray;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+
+#addStudentBtn {
+    padding: 10px 31px;
+	font-size: 18px;
+	background-color: purple;
+	border: 1px solid transparent;
+	color: #fff;
+	cursor: pointer;
+    position: absolute;
+    right: 30px;
+    bottom: 16px;
+    margin: 10px;
+    transition: 0.5s;
+    font-family: 'Chewy';
+    text-transform: uppercase;
+}
+
+#addStudentBtn:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); 
+    outline-width: 0;
+}
+
+#homeSearch {
+	min-width: 500px;
+	font-size: 20px;
+	padding: 5px 10px;
+	border: 1px solid darkgray;
+    outline: none;
+    margin-left: 79px;
+}
+
+
+#homeSearchDiv {
+    position: relative;
+    left: 20px;
+}
+
+
+#homeSearchBtn {
+	font-size: 20px;
+	padding: 5px 25px;
+	background-color: gray;
+	border: 1px solid gray;
+	color: #fff;
+	border-radius: 3px 0px 0px 3px;
+	margin-left: 10px;
+    position: absolute;
+}
+
+
+/*****************
+HOME TABLE STYLE
+*****************/
+
+#homeSection table{
+  width:100%;
+  table-layout: fixed;
+}
+
+.tbl-header{
+  background-color: rgba(0,0,0,.5);
+ }
+
+.tbl-content{
+  height:330px;
+  overflow-x:auto; 
+  border-left: 1px solid #c8c8c8;
+}
+
+.tbl-header th{
+  padding: 19px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+  text-transform: uppercase;
+    font-family: 'Chewy';
+    letter-spacing: 1px;
+}
+
+.tbl-content td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 15px;
+  color: #525252;
+  border-bottom: dotted 1px #c8c8c8;
+}
+
+
+.tbl-header span {
+    color: #000;
+    padding-right: 5px;
+}
+
+.homeUpdateBtn {
+    background-color: #4CAF50;
+    padding: 4px 20px;
+    border:1px solid #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.homeDeleteBtn {
+    background-color: red;
+    padding: 4px 20px;
+    border:1px solid red;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.homeDeleteBtn:hover {
+    opacity: 0.5;
+}
+
+.homeUpdateBtn:hover {
+    opacity: 0.8;
+}
+
+.center {
+    text-align: center;
+}
+
+
+#over-lay-bg {
+	background-color: #000;
+	display: none;
+	/*background-color: rgba(0,0,0,0.6);*/ /*not compatibel with IE 7 and 8*/
+	height: 100%;
+	left: 0;
+	margin: auto;
+	opacity: 0.6; /*not compatibel with IE 7*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /* IE 8 */
+	filter: alpha(opacity=50); /*IE 7*/
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1001;
+}
+
+#pop-up-content {
+	background-color: #fff;
+	border-radius: 5px;
+	color: #000;
+	padding: 20px;
+	display: none;
+	position: fixed;
+	width: fixed;
+	z-index: 1002;
+}
+
+
+#modal-close-button {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 27px;
+    color: #fff;
+    background-color: red;
+    padding: 0px 11px 4px 14px;
+    border-radius: 0px 5px 0px 0px;
+}
+
+
+
+#pop-up-content label {
+	background-color: #858585;
+	padding: 5px;
+	color: #fff;
+	border: 1px solid #858585;
+	border-radius: 3px;
+	font-size: 15px;
+}
+
+.updateBox {
+    display: inline-block;
+    padding: 10px;
+}
+
+
+
+#name {
+	min-width: 360px;
+	height: 31px;
+	margin-top: 30px;
+	border: 1px solid #b0b0b0;
+	padding: 7px;
+    font-size: 16px;
+    background-color: #b0b0b0;
+    color: #fff;
+}
+
+
+#grade {
+    width: 70px;
+    height: 31px;
+    border: 1px solid #b0b0b0;
+    padding: 2px;
+    font-size: 16px;
+    background-color: #b0b0b0;
+    color: #fff;
+}
+
+#menu {
+    min-width: 140px;
+    height: 31px;
+    border: 1px solid #b0b0b0;
+    padding: 2px;
+    font-size: 16px;
+    background-color: #b0b0b0;
+    color: #fff;
+}
+
+#updateDatepicker {
+	max-width: 86px;
+	height: 31px;
+	border: 1px solid #b0b0b0;
+	padding-left: 10px;
+    background-color: #b0b0b0;
+    color: #fff;
+}
+
+#saveBtn {
+	padding: 5px 18px;
+	font-size: 15px;
+	background-color: purple;
+	border: 1px solid transparent;
+	color: #fff;
+	border-radius: 3px;
+	cursor: pointer;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
+}
+
+
+
+
+#addStudentClose {
+	font-size: 20px;
+	padding: 6px 10px;
+	background-color: red;
+	border: 1px solid darkgray;
+	cursor: pointer;
+	color: #fff;
+	border-radius: 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 10px;
+}
+
+.addStd {
+    display: inline-block;
+}
+
+#ad_name {
+    min-width: 360px;
+	height: 31px;
+	margin-top: 7px;
+	border: 1px solid darkgray;
+	padding: 7px;
+	font-size: 16px;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+#add_grade {
+    width: 70px;
+    height: 31px;
+    border: 1px solid darkgray;
+    padding: 2px;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+
+#add_menu {
+    min-width: 140px;
+    height: 31px;
+    border: 1px solid darkgray;
+    padding: 2px;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+#addStd_datepicker {
+    max-width: 86px;
+	height: 31px;
+	border: 1px solid darkgray;
+	padding-left: 10px;
+}
+
+#addStudent label {
+	background-color: gray;
+	padding: 5px;
+	color: #fff;
+	border: 1px solid gray;
+	border-radius: 3px;
+    font-size: 14px;
+}
+
+#Add_Student {
+    font-size: 18px;
+	padding: 4px;
+	border: 1px solid darkgray;
+	border-radius: 4px;
+	min-width: 250px;
+    margin-top: 20px;
+	cursor: pointer;
+}
+
+
+#addValidation_msg p {
+    padding: 6px;
+    margin: 15px 0 0 0;
+    background-color: #fff;
+    max-width: 250px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.Vwords {
+    position: absolute;
+    font-style: normal;
+    left: 47px;
+    top: 16px;
+    font-size: 15px;
+}
+
+.addStd_valid {
+    color: green;
+    font-size: 15px;
+}
+
+.addStd_valid span {
+   font-size: 30px;
+    padding: 4px; 
+}
+
+.addStd_invalid {
+    color: red;
+    font-size: 15px;
+}
+
+.addStd_invalid span {
+    font-size: 30px;
+    padding: 4px;
+}
+
+.duration {
+    cursor: pointer;
+}
+
+.duration:hover {
+    color: purple;
+}
+
+
+
+#succesmsg {
+    display: none;
+    background-color: #047C24;
+    padding: 5px;
+    color: #fff;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+
+.checkSucess {
+    font-size: 30px;
+    padding: 0 20px;
+}
+
+.checktxt {
+    font-size: 22px;
+    padding: 5px;
+}
+
+#updatemsg {
+    display: none;
+    background-color: #047C24;
+    padding: 5px;
+    color: #fff;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+
+#delmsg {
+    display: none;
+    background-color: #047C24;
+    padding: 5px;
+    color: #fff;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+
+
+.updateBoxSpecial {
+    display: block;
+    padding: 0px;
+}
+
+.cap {
+    text-transform: capitalize;
+}
+
+
+.copyright {
+    text-align: center;
+    background-color: purple;
+    color: white;
+    margin: 0px 130px;
+    padding: 5px;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+#print_filter {
+    padding: 20px;
+}
+
+.filterSelect {
+    display: inline-block;
+    border: 1px solid #ccc;
+    width: 150px;
+    border-radius: 3px;
+    overflow: hidden;
+    background: #fafafa url("arrowdown.gif") no-repeat 90% 50%;
+    margin-right: 20px;
+}
+
+.filterSelect select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+#print_out th{
+  padding: 19px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 16px;
+  color: #000;
+  text-transform: uppercase;
+    font-family: 'Chewy';
+    letter-spacing: 1px;
+}
+#print_out td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 15px;
+  color: #525252;
+  border-bottom: dotted 1px #c8c8c8;
+}
+
+#print_name {
+    cursor: pointer;
+}
+
+#print_name:hover {
+    color: purple;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

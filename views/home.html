@@ -1,0 +1,198 @@
+<section id="homeSection">
+    <div id="succesmsg">
+        <h4>
+        <span class="checkSucess"><i class="fa fa-check-circle"></i></span>
+        <span class="checktxt">Student Successfully Added</span>
+        </h4>
+    </div>
+    <div id="updatemsg">
+        <h4>
+        <span class="checkSucess"><i class="fa fa-check-circle"></i></span>
+        <span class="checktxt">Student Successfully Updated</span>
+        </h4>
+    </div>
+    <div id="delmsg">
+        <h4>
+        <span class="checkSucess"><i class="fa fa-check-circle"></i></span>
+        <span class="checktxt">Student Successfully Deleted</span>
+        </h4>
+    </div>
+    
+    
+    <div id="homeSearchFilter">
+        <div id="homeSearchDiv" ng-show="!addStudent">
+            <label id="homeSearchBtn"><i class="fa fa-search" aria-hidden="true"></i></label>
+            <input id="homeSearch" type="text" placeholder="Enter student name..." ng-model="searchName.name"/>
+        </div>
+        
+        <button id="addStudentBtn" ng-click="addStudent = !addStudent" ng-show="!addStudent">Add Student</button>
+        
+        <button id="addStudentClose" ng-click="addStudent = !addStudent" ng-show="addStudent"><i class="fa fa-close"></i></button>
+        
+        
+        
+        <div id="addStudent" ng-show="addStudent">
+           <form name="postStudent" ng-submit="postStudent.$valid && addStudents()" novalidate>
+            <div class="addStd">
+                    <label for="">Name:</label>
+                    <input type="text" name="ad_name" id="ad_name" placeholder="Student Name" ng-model="addASudent.name" required/>
+            </div>
+            <div class="addStd">
+                <label for="add_grade">Grade:</label>
+                <select name="add_grade" ng-model="addASudent.grade" id="add_grade" required>
+                    <option value="nusery 1">N 1</option>
+                    <option value="nusery 2">N 2</option>
+                    <option value="kg 1">Kg 1</option>
+                    <option value="kg 2">Kg 2</option>
+                    <option value="grade 1">G 1</option>
+                    <option value="grade 2">G 2</option>
+                    <option value="grade 3">G 3</option>
+                </select>
+            </div>
+            <div class="addStd">
+                <label for="add_menu">Menu:</label>
+                <select name="add_menu" ng-model="addASudent.menu" id="add_menu" required>
+                    <option value="Snack&Lunch">Snack&Lunch</option>
+                    <option value="Snack Only">Snack Only</option>
+                    <option value="Lunch Only">Lunch Only</option>
+                </select>
+            </div>
+            
+            <div class="addStd">
+                <label>Duration:</label>
+                <input id="addStd_datepicker" class="datePk" type="text" placeholder="Duration" ng-model="addASudent.duration" required datepicker/>
+            </div>
+            
+            <input id="Add_Student" type="submit" value="Add Student" ng-disabled="!postStudent.$valid"/>
+            
+            <div id="addValidation_msg">
+               
+                <p class="addStd_valid" ng-show="postStudent.$valid">
+                <span>
+                    <i class="fa fa-check-circle"></i>
+                </span>
+                <i class="Vwords">Form Complete</i>
+                </p>
+                
+                <p class="addStd_invalid" ng-show="!postStudent.$valid">
+                <span>
+                    <i class="fa fa-exclamation-circle"></i>
+                </span>
+                <i class="Vwords">Please Fill Out All Fields</i>
+                </p>
+            </div>
+            </form>
+        </div>
+        
+        
+    </div>
+    
+    <div id="studentsNumber">
+        <h4>Total number of students: <span>{{total}}</span></h4>
+    </div>
+    
+    <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+                <tr>
+                  <th><span><i class="fa fa-user"></i></span>Name</th>
+                  <th><span><i class="fa fa-graduation-cap"></i></span>Grade</th>
+                  <th><span><i class="fa fa-cutlery"></i></span>Menu</th>
+                  <th><span><i class="fa fa-clock-o"></i></span>Duration</th>
+                  <th></th>
+                  <th></th>
+                  </tr>
+          </thead>
+        </table>
+    </div>
+    <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+                <tr ng-repeat="student in students | orderBy: 'name' | filter:searchName">
+                    <td class="cap">{{student.name}}</td>
+                    <td class="cap">{{student.grade}}</td>
+                    <td class="cap">{{student.menu}}</td>
+                    <td id="{{student.student_id}}" class="duration" ng-click="initializeClock(student.student_id, student.duration)">{{student.duration}}</td>
+                    <td class="center"><button class="homeUpdateBtn" ng-click="editStudents(student)"><i class="fa fa-pencil"></i></button></td>
+                    <td class="center"><button class="homeDeleteBtn" ng-click="deleteStudent(student.student_id)"><i class="fa fa-trash-o"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</section>
+
+
+    <div id="pop-up-content">
+        
+        <span id="modal-close-button"><i class="fa fa-close"></i></span>
+        
+        
+        <form name="updateStudent">
+            <div class="updateBox">
+                <label for="name">Name:</label>
+                <input id="name" type="text" name="name" placeholder="Stundent Name" ng-model="editStudent.name"/>
+            </div>
+
+            <div class="updateBox">
+                <label for="grade">Grade:</label>
+                <select name="grade" id="grade" ng-model="editStudent.grade">
+                    <option value="nusery 1">N 1</option>
+                        <option value="nusery 2">N 2</option>
+                        <option value="kg 1">Kg 1</option>
+                        <option value="kg 2">Kg 2</option>
+                        <option value="grade 1">G 1</option>
+                        <option value="grade 2">G 2</option>
+                        <option value="grade 3">G 3</option>
+                </select>
+            </div>
+
+            <div class="updateBox">
+                <label for="menu">Menu</label>
+                <select name="menu" id="menu" ng-model="editStudent.menu">
+                    <option value="Snack&Lunch">Snack&Lunch</option>
+                    <option value="Snack Only">Snack Only</option>
+                    <option value="Lunch Only">Lunch Only</option>
+                </select>
+            </div>
+
+            <div class="updateBox">
+                <label for="duration">Duration</label>
+                <input id="updateDatepicker" class="datePk" type="text" placeholder="Duration" ng-model="editStudent.duration" datepicker/>
+            </div>
+
+            <div class="updateBox updateBoxSpecial">
+                <input id="saveBtn" type="submit" value="Save" ng-click=updateStudents(editStudent.student_id)>
+            </div>
+        </form>      
+</div>
+
+<div class="copyright">&copy; 2016 ARMACK ROYAL INTERNATIONAL SCHOOL <br>Designed & Programmed by <span>Nick Sw</span>
+
+</div>
+
+<div id="over-lay-bg"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

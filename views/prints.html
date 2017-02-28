@@ -1,0 +1,51 @@
+<div id="print_filter">
+    <div class="filterSelect">
+        <select name="grade_select" id="grade_select" ng-model="gradeFilter.grade">
+            <option value="">Grade</option>
+            <option value="nusery 1">N1</option>
+            <option value="nusery 2">N2</option>
+            <option value="kg 1">Kg 1</option>
+            <option value="kg 2">Kg 2</option>
+            <option value="grade 1">Grade 1</option>
+            <option value="grade 2">Grade 2</option>
+            <option value="grade 3">Grade 3</option>
+        </select>
+    </div>
+
+    <div class="filterSelect">
+        <select name="grade_select" id="grade_select" ng-model="gradeFilter.menu">
+            <option value="">Menu</option>
+            <option value="Snack&Lunch">Snack&Lunch</option>
+            <option value="Snack Only">Snack Only</option>
+            <option value="Lunch Only">Lunch Only</option>
+        </select>
+    </div>
+</div>
+
+  
+
+   
+    <div id="print_out">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Grade</th>
+                    <th>Menu</th>
+                    <th>Duration</th>
+                    <th>Sign</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-hide="hideIt" ng-repeat="student in students | orderBy: 'name' | filter:gradeFilter">
+                    <td>{{$index + 1}}</td>
+                    <td id="print_name" class="cap" ng-dblclick="hideIt = true">{{student.name}}</td>
+                    <td class="cap">{{student.grade}}</td>
+                    <td class="cap">{{student.menu}}</td>
+                    <td id="{{student.student_id}}" class="duration" ng-click="initializeClock(student.student_id, student.duration)">{{student.duration}}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
