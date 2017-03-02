@@ -20,6 +20,9 @@
 body {
     font-family: 'Roboto', verdana;
     position: relative;
+    background-image: url('http://res.cloudinary.com/hmr4mumla/image/upload/v1488413041/thnk.png');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 nav {
